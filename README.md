@@ -180,3 +180,5 @@ plugins: [
 > html-loader 与 html-webpack-plugin 结合使用有冲突
 
 > vue-cli3 使用[https://github.com/neutrinojs/webpack-chain#getting-started](webpack-chain's)
+
+> tree shaking 将模块中未引用的代码对象排除引入 （需要压缩才会去除）
