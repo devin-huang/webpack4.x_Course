@@ -181,4 +181,4 @@ plugins: [
 
 > vue-cli3 使用[https://github.com/neutrinojs/webpack-chain#getting-started](webpack-chain's)
 
-> tree shaking 将模块中未引用的代码对象排除引入 （需要压缩才会去除）
+> tree shaking 将模块中未引用的代码对象排除引入 （默认生产环境自动压缩已排除）
