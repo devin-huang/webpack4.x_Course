@@ -51,7 +51,8 @@ npm install --save-dev
 ### 项目目录结构
 
 ```
-|- build                   webpack模块化打包配置
+|- build                   webpack模块化打包配置(使用cross-env方式，二选一种方式)
+|- build-env               webpack模块化打包配置(使用env方式，二选一种方式)
 |- config                  环境变量得配置
 |- /src                    目标打包路径
   |- assets                静态资源
