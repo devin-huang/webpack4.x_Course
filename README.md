@@ -10,7 +10,7 @@
 
 ## npm install
 
-```js
+```
 npm install
 1.安装到项目 node_modules; 
 2.不会将依赖写入 devDependencies 或 dependencies;
