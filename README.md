@@ -1,16 +1,17 @@
 # WebPack
 
-本质上，webpack 是一个现代 JavaScript 应用程序的静态模块打包工具。当 webpack 处理应用程序时，它会在内部构建一个 依赖图(dependency graph)，此依赖图会映射项目所需的每个模块，并生成一个或多个 bundle。
+> 本质上，webpack 是一个现代 JavaScript 应用程序的静态模块打包工具。当 webpack 处理应用程序时，它会在内部构建一个 依赖图(dependency graph)，此依赖图会映射项目所需的每个模块，并生成一个或多个 bundle。
 
 
 # WebPack与Grunt、Gulp相比特性
 
-Webpack和Gulp/Grunt并没有太多的可比性，Gulp/Grunt是一种能够优化前端的开发流程的工具，而WebPack是一种模块化的解决方案，不过Webpack的优点使得Webpack在很多场景下可以替代Gulp/Grunt类的工具。
+> Webpack和Gulp/Grunt并没有太多的可比性，Gulp/Grunt是一种能够优化前端的开发流程的工具，而WebPack是一种模块化的解决方案，不过Webpack的优点使得Webpack在很多场景下可以替代Gulp/Grunt类的工具。
 
 
 
 # npm install
-```
+
+```node
 npm install
 1. 安装依赖到项目 node_modules 目录
 2. 不会将依赖写入 devDependencies 或 dependencies 节点
@@ -82,7 +83,7 @@ npm install --save-dev
 
 ## optimization 优化
 
-```
+```js
 minimizer： CSS/JS压缩
 
 runtimeChunk / splitChunks： JavaScript代码抽离
@@ -105,7 +106,7 @@ CDN引用第三方依赖， 需要把ProvidePlugin对应lodash删除,并在index
 ```
 
 ## plugin
-```
+```js
 webpack.ProvidePlugin        按需载入第三方框架/库
 webpack.DefinePlugin         根据环境变量定义自定义变量（仅JavaScript调用，非node.js调用）
 html-webpack-plugin          自动将脚本资源在模板文件内引用
@@ -147,7 +148,7 @@ package.json
 
 
 config/prod.env.js
-```
+```bash
 module.exports = {
   'API_ROOT': JSON.stringify('http://localhost:8080'),
   'LOGIN_URL': JSON.stringify('http://localhost:8080.prod/login'),
@@ -157,7 +158,7 @@ module.exports = {
 
 
 webpack.prod.js  
-```
+```js
 const env = require('../config/prod.env')
 
 plugins: [
