@@ -83,18 +83,18 @@ npm install --save-dev
 ```js
 minimizer： CSS/JS压缩
 
-runtimeChunk / splitChunks： JavaScript代码抽离
+runtimeChunk/splitChunks： JavaScript代码抽离
 
-app     开发编写的代码
-runtime 将包含chunks 映射关系的 list单独从 app.js里提取出来
-vendors 第三方依赖框架/库
+app                    开发编写的代码
+runtime                将包含chunks 映射关系的 list单独从 app.js里提取出来
+vendors                第三方依赖框架/库
 
 ```
 ### resolve 解析
 
 ```
-extensions  根据配置内容可以省略引用文件的后缀名，依顺序搜索
-alias       指定名称来替代（第三方框架/路径等）
+extensions                根据配置内容可以省略引用文件的后缀名，依顺序搜索
+alias                     指定名称来替代（第三方框架/路径等）
 ```
 
 ### externals 扩展
@@ -104,18 +104,17 @@ CDN引用第三方依赖， 需要把ProvidePlugin对应lodash删除,并在index
 ```
 
 ### plugin
-```js
-webpack.ProvidePlugin        按需载入第三方框架/库
-webpack.DefinePlugin         根据环境变量定义自定义变量（仅JavaScript调用，非node.js调用）
-html-webpack-plugin          自动将脚本资源在模板文件内引用
-mini-css-extract-plugin      将样式抽离成独立文件并在模板文件内引用
-webpack-bundle-analyzer      分析项目中占用大空间模块使用CDN引用减轻大小
-copy-webpack-plugin          复制资源
-webpack-merge                合并webpack配置
-CleanWebpackPlugin           清除文件夹/文件
-
-OptimizeCSSAssetsPlugin      压缩 CSS
-UglifyJsPlugin               压缩 JavaScript
+```
+webpack.ProvidePlugin                按需载入第三方框架/库
+webpack.DefinePlugin                 根据环境变量定义自定义变量（仅JavaScript调用，非node.js调用）
+html-webpack-plugin                  自动将脚本资源在模板文件内引用
+mini-css-extract-plugin              将样式抽离成独立文件并在模板文件内引用
+webpack-bundle-analyzer              分析项目中占用大空间模块使用CDN引用减轻大小
+copy-webpack-plugin                  复制资源
+webpack-merge                        合并webpack配置
+CleanWebpackPlugin                   清除文件夹/文件
+OptimizeCSSAssetsPlugin              压缩 CSS
+UglifyJsPlugin                       压缩 JavaScript
 
 ```
 > 优化策略
@@ -133,7 +132,7 @@ package.json
 
 > 运行跨平台设置和使用环境变量  `npm install --save-dev cross-env`
 
-```
+```json
 // 使用cross-env切换环境变量
 "dev": "cross-env NODE_ENV=development  webpack-dev-server --config build/webpack.dev.js --open --progress",
 "build": "cross-env NODE_ENV=production webpack --config build/webpack.prod.js",
