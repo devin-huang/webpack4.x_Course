@@ -47,14 +47,6 @@ npm install --save-dev
 
 > 具体实现可参考源码
 
-* Entry：入口，Webpack 执行构建的第一步将从 Entry 开始，可抽象成输入。
-* Output：输出结果，在 Webpack 经过一系列处理并得出最终想要的代码后输出结果。
-* Module：模块，在 Webpack 里一切皆模块，一个模块对应着一个文件。Webpack 会从配置的 Entry 开始递归找出所有依赖的模块。
-* Chunk：代码块，一个 Chunk 由多个模块组合而成，用于代码合并与分割。
-* Loader：模块转换器，用于把模块原内容按照需求转换成新内容。
-* Plugin：扩展插件，在 Webpack 构建流程中的特定时机注入扩展逻辑来改变构建结果或做你想要的事情。
-
-
 
 ### 项目目录结构
 
@@ -72,6 +64,12 @@ npm install --save-dev
 |- postcss.config.js       项目兼容浏览器版本配置
 ```
 
+* Entry：入口，Webpack 执行构建的第一步将从 Entry 开始，可抽象成输入。
+* Output：输出结果，在 Webpack 经过一系列处理并得出最终想要的代码后输出结果。
+* Module：模块，在 Webpack 里一切皆模块，一个模块对应着一个文件。Webpack 会从配置的 Entry 开始递归找出所有依赖的模块。
+* Chunk：代码块，一个 Chunk 由多个模块组合而成，用于代码合并与分割。
+* Loader：模块转换器，用于把模块原内容按照需求转换成新内容。
+* Plugin：扩展插件，在 Webpack 构建流程中的特定时机注入扩展逻辑来改变构建结果或做你想要的事情。
 
 ### devtool 映射 （当JS发现错误时准确定位到源文件位置） [devtool配置](https://webpack.docschina.org/configuration/devtool/#src/components/Sidebar/Sidebar.jsx)
 
@@ -121,8 +119,10 @@ UglifyJsPlugin               压缩 JavaScript
 
 ```
 > 优化策略
-1.dllPlugin 打包项目时将第三方框架/插件抽离直接再dist/html引用
-2.happypack 多线程打包
+
+> 1.dllPlugin 打包项目时将第三方框架/插件抽离直接再dist/html引用
+
+> 2.happypack 多线程打包
 
 
 ## 环境变量
