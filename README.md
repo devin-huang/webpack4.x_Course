@@ -7,23 +7,30 @@
 
 > Webpack和Gulp/Grunt并没有太多的可比性，Gulp/Grunt是一种能够优化前端的开发流程的工具，而WebPack是一种模块化的解决方案，不过Webpack的优点使得Webpack在很多场景下可以替代Gulp/Grunt类的工具。
 
-## :note
 
 ## npm install
 
 ```js
 npm install
-1.安装到项目 node_modules; 2.不会将依赖写入 devDependencies 或 dependencies; 3.npm install 初始化项目时不会下载
+1.安装到项目 node_modules; 
+2.不会将依赖写入 devDependencies 或 dependencies;
+3.npm install 初始化项目时不会下载
 
 npm install -g
-1.不安装到项目 node_modules; 2.不会将依赖写入 devDependencies或dependencies; 3. npm install 初始化项目时不会下载
+1.不安装到项目 node_modules;
+2.不会将依赖写入 devDependencies或dependencies;
+3. npm install 初始化项目时不会下载
 
 npm install -save
-1.安装到项目 node_modules; 2.将依赖写入 dependencies; 3.npm install 初始化项目时下载; 
+1.安装到项目 node_modules;
+2.将依赖写入 dependencies;
+3.npm install 初始化项目时下载; 
 4. npm install --production 或注明NODE_ENV变量值为 production 时，自动下载依赖到 node_modules 目录
 
 npm install --save-dev
-1.安装依赖到项目 node_modules; 2. 将依赖写入 devDependencies; 3.npm install 初始化项目时下载依赖;
+1.安装依赖到项目 node_modules;
+2. 将依赖写入 devDependencies;
+3.npm install 初始化项目时下载依赖;
 4. npm install --production或注明NODE_ENV变量值为 production 时，不会自动下载依赖到 node_modules 目录
 
 
@@ -84,6 +91,7 @@ runtimeChunk / splitChunks： JavaScript代码抽离
 app     开发编写的代码
 runtime 将包含chunks 映射关系的 list单独从 app.js里提取出来
 vendors 第三方依赖框架/库
+
 ```
 ### resolve 解析
 
@@ -119,6 +127,7 @@ UglifyJsPlugin               压缩 JavaScript
 
 
 ## 环境变量
+
 ### 根据环境变量模块化打包
 
 package.json
