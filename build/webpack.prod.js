@@ -22,7 +22,13 @@ module.exports = merge(common, {
   optimization: {
     minimizer: [
       // CSS压缩
-      new OptimizeCSSAssetsPlugin({}),
+      new OptimizeCSSAssetsPlugin({
+        cssProcessorOptions: {
+          discardComments: {
+            removeAll: true // 移除注释
+          }
+        }
+      }),
       // JS压缩
       new UglifyJsPlugin({
         uglifyOptions: {
@@ -32,8 +38,9 @@ module.exports = merge(common, {
           pure_funcs: ['console.log']
         },
         test: /\.js(\?.*)?$/i,
-        include: resolve('dist'),
-        exclude: resolve('node_modules'),
+        exclude: /\/node_modules/,
+        parallel: true, // 开启并行压缩，充分利用cpu
+        extractComments: false, // 移除注释
         sourceMap: true
       })
     ],

@@ -55,7 +55,7 @@ module.exports = {
       {
         test: /\.scss$/,
         use: [
-          'style-loader',
+          process.env.NODE_ENV === 'production' ? MiniCssExtractPlugin.loader : 'style-loader',
           'css-loader',
           'sass-loader'
         ]
@@ -67,6 +67,16 @@ module.exports = {
           'css-loader',
           'postcss-loader'
         ]
+      },
+      {
+        test: /\.m?js$/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env']
+          }
+        }
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
