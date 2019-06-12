@@ -11,7 +11,7 @@
 
 # npm install
 
-```node
+```js
 npm install
 1. 安装依赖到项目 node_modules 目录
 2. 不会将依赖写入 devDependencies 或 dependencies 节点
@@ -119,16 +119,17 @@ CleanWebpackPlugin           清除文件夹/文件
 OptimizeCSSAssetsPlugin      压缩 CSS
 UglifyJsPlugin               压缩 JavaScript
 
-优化策略
+```
+> 优化策略
 1.dllPlugin 打包项目时将第三方框架/插件抽离直接再dist/html引用
 2.happypack 多线程打包
-```
 
 
 # 根据环境变量模块化打包
 
 package.json
-*运行跨平台设置和使用环境变量  `npm install --save-dev cross-env`*
+
+> 运行跨平台设置和使用环境变量  `npm install --save-dev cross-env`
 
 ```
 // 使用cross-env切换环境变量
@@ -143,8 +144,7 @@ package.json
 
 # 根据环境变量配置路径
 
-实际开发中需要对不同环境的API/图片/登录等进行配置，所以需要项目目录结构：`config`存放不同环境变量的资源路径配置， 
-再用环境变量模块化打包时指定引用资源路径配置，保存到 `webpack.DefinePlugin` 从而前端能获取资源路径
+> 实际开发中需要对不同环境的API/图片/登录等进行配置，所以需要项目目录结构：`config`存放不同环境变量的资源路径配置， 再用环境变量模块化打包时指定引用资源路径配置，保存到 `webpack.DefinePlugin` 从而前端能获取资源路径
 
 
 config/prod.env.js
