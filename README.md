@@ -178,3 +178,5 @@ plugins: [
 ## 其他
 
 > html-loader 与 html-webpack-plugin 结合使用有冲突
+
+> vue-cli3 使用[https://github.com/neutrinojs/webpack-chain#getting-started](webpack-chain's)
