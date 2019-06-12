@@ -174,3 +174,7 @@ plugins: [
   })
 ]
 ```
+
+## 其他
+
+> html-loader 与 html-webpack-plugin 结合使用有冲突
