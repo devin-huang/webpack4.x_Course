@@ -38,7 +38,7 @@ npm install --save-dev
 开发环境，npm install ，安装所有 devDependencies 和 dependencies 里面的模块
 ```
 
-** 这里配置Webpack 必须要安装三个依赖`webpack` `webpack-cli` `webpack-dev-server`
+> 这里配置Webpack 必须要安装三个依赖`webpack` `webpack-cli` `webpack-dev-server`
 
 
 
