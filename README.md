@@ -38,15 +38,14 @@ npm install --save-dev
 **开发环境，npm install ，安装所有 devDependencies 和 dependencies 里面的模块**
 ```
 
-> 这里配置Webpack 必须要安装三个依赖`webpack` `webpack-cli` `webpack-dev-server`
-
-
 
 ## 初始化项目结构
 
-入门配置参考： [https://webpack.docschina.org/guides/](https://webpack.docschina.org/guides/)
+> 入门配置参考： [https://webpack.docschina.org/guides/](https://webpack.docschina.org/guides/)
 
-具体实现可参考源码
+> 这里配置Webpack 必须要安装三个依赖`webpack` `webpack-cli` `webpack-dev-server`
+
+> 具体实现可参考源码
 
 * Entry：入口，Webpack 执行构建的第一步将从 Entry 开始，可抽象成输入。
 * Output：输出结果，在 Webpack 经过一系列处理并得出最终想要的代码后输出结果。
