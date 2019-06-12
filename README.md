@@ -1,48 +1,41 @@
-# WebPack
+## WebPack
 
 > 本质上，webpack 是一个现代 JavaScript 应用程序的静态模块打包工具。当 webpack 处理应用程序时，它会在内部构建一个 依赖图(dependency graph)，此依赖图会映射项目所需的每个模块，并生成一个或多个 bundle。
 
 
-# WebPack与Grunt、Gulp相比特性
+## WebPack与Grunt、Gulp相比特性
 
 > Webpack和Gulp/Grunt并没有太多的可比性，Gulp/Grunt是一种能够优化前端的开发流程的工具，而WebPack是一种模块化的解决方案，不过Webpack的优点使得Webpack在很多场景下可以替代Gulp/Grunt类的工具。
 
-## :green_heart: Special Note! :eyes:
+## :note
 
-# npm install
+## npm install
 
 ```js
 npm install
-1. 安装依赖到项目 node_modules 目录
-2. 不会将依赖写入 devDependencies 或 dependencies 节点
-3. npm install 初始化项目时不会下载依赖
+1.安装到项目 node_modules; 2.不会将依赖写入 devDependencies 或 dependencies; 3.npm install 初始化项目时不会下载
 
 npm install -g
-1. 不会安装依赖到项目 node_modules 目录
-2. 不会将依赖写入 devDependencies或dependencies 节点
-3. npm install 初始化项目时不会下载依赖
+1.不安装到项目 node_modules; 2.不会将依赖写入 devDependencies或dependencies; 3. npm install 初始化项目时不会下载
 
 npm install -save
-1. 安装依赖到项目 node_modules 目录
-2. 将依赖写入 dependencies 节点
-3. npm install 初始化项目时下载依赖
+1.安装到项目 node_modules; 2.将依赖写入 dependencies; 3.npm install 初始化项目时下载; 
 4. npm install --production 或注明NODE_ENV变量值为 production 时，自动下载依赖到 node_modules 目录
 
 npm install --save-dev
-1. 安装依赖到项目 node_modules 目录
-2. 将依赖写入 devDependencies  节点
-3. npm install 初始化项目时下载依赖
+1.安装依赖到项目 node_modules; 2. 将依赖写入 devDependencies; 3.npm install 初始化项目时下载依赖;
 4. npm install --production或注明NODE_ENV变量值为 production 时，不会自动下载依赖到 node_modules 目录
 
-生产环境，使用npm install --production 安装 dependencies 部分的模块
-开发环境，npm install ，安装所有 devDependencies 和 dependencies 里面的模块
+
+**生产环境，使用npm install --production 安装 dependencies 部分的模块**
+**开发环境，npm install ，安装所有 devDependencies 和 dependencies 里面的模块**
 ```
 
 > 这里配置Webpack 必须要安装三个依赖`webpack` `webpack-cli` `webpack-dev-server`
 
 
 
-# 初始化项目结构
+## 初始化项目结构
 
 入门配置参考： [https://webpack.docschina.org/guides/](https://webpack.docschina.org/guides/)
 
@@ -57,7 +50,7 @@ npm install --save-dev
 
 
 
-## 项目目录结构
+### 项目目录结构
 
 ```
 |- build                   webpack模块化打包配置
@@ -74,14 +67,14 @@ npm install --save-dev
 ```
 
 
-## devtool 映射 （当JS发现错误时准确定位到源文件位置） [devtool配置](https://webpack.docschina.org/configuration/devtool/#src/components/Sidebar/Sidebar.jsx)
+### devtool 映射 （当JS发现错误时准确定位到源文件位置） [devtool配置](https://webpack.docschina.org/configuration/devtool/#src/components/Sidebar/Sidebar.jsx)
 
 ```
 开发环境：cheap-module-eval-source-map
 生产环境：source-map
 ```
 
-## optimization 优化
+### optimization 优化
 
 ```js
 minimizer： CSS/JS压缩
@@ -92,20 +85,20 @@ app     开发编写的代码
 runtime 将包含chunks 映射关系的 list单独从 app.js里提取出来
 vendors 第三方依赖框架/库
 ```
-## resolve 解析
+### resolve 解析
 
 ```
 extensions  根据配置内容可以省略引用文件的后缀名，依顺序搜索
 alias       指定名称来替代（第三方框架/路径等）
 ```
 
-## externals 扩展
+### externals 扩展
 
 ```
 CDN引用第三方依赖， 需要把ProvidePlugin对应lodash删除,并在index.html中直接引用CDN
 ```
 
-## plugin
+### plugin
 ```js
 webpack.ProvidePlugin        按需载入第三方框架/库
 webpack.DefinePlugin         根据环境变量定义自定义变量（仅JavaScript调用，非node.js调用）
@@ -125,7 +118,8 @@ UglifyJsPlugin               压缩 JavaScript
 2.happypack 多线程打包
 
 
-# 根据环境变量模块化打包
+## 环境变量
+### 根据环境变量模块化打包
 
 package.json
 
@@ -142,7 +136,7 @@ package.json
 ```
 
 
-# 根据环境变量配置路径
+### 根据环境变量配置路径
 
 > 实际开发中需要对不同环境的API/图片/登录等进行配置，所以需要项目目录结构：`config`存放不同环境变量的资源路径配置， 再用环境变量模块化打包时指定引用资源路径配置，保存到 `webpack.DefinePlugin` 从而前端能获取资源路径
 
