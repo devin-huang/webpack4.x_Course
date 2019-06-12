@@ -16,7 +16,7 @@ function resolve (dir) {
 module.exports = merge(common, {
   mode: 'production',
   output: {
-    publicPath: env.API_ROOT.replace(/"|'/gi, ""),
+    publicPath: env.API_ROOT.replace(/"|'/gi, '')
   },
   devtool: 'source-map',
   optimization: {
@@ -54,7 +54,7 @@ module.exports = merge(common, {
       'process.env': env
     }),
     new CleanWebpackPlugin({
-      root: resolve("../"),
+      root: resolve('../'),
       verbose: true
     })
   ]

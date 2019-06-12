@@ -25,7 +25,7 @@ module.exports = {
   },
   output: {
     filename: process.env.NODE_ENV === 'production' ? 'js/[name].[contenthash].js' : 'js/[name].js',
-    path: resolve('dist'),
+    path: resolve('dist')
   },
   devServer: {
     // hot: true
@@ -51,6 +51,14 @@ module.exports = {
         options: {
           attrs: [':data-src', 'img:src']
         }
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          'sass-loader'
+        ]
       },
       {
         test: /\.css$/,
@@ -106,7 +114,7 @@ module.exports = {
       title: 'Devin webpack Demo',
       filename: 'index.html',
       template: 'src/index.html',
-      inject: 'body',
+      inject: 'body', // 插入到body最后
       minify: {
         collapseWhitespace: true, // 合并空白字符
         removeComments: true, // 移除注释

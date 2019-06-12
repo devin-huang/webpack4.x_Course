@@ -1,0 +1,23 @@
+@font-face {
+  font-family: "Trappist Regular";
+  src: url("../assets/fonts/Trappist-Regular.woff2") format("woff2"),
+  url("../assets/fonts/Trappist-Regular.woff") format("woff");
+}
+
+body {
+  font-family: "Trappist Regular", Arial, "Helvetica Neue", Helvetica, sans-serif;
+  background: url("../assets/bg.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+.main {
+  font-size: xx-large;
+  text-align: center;
+  margin: 20px;
+  img {
+    width: 25%;
+    display: block;
+    margin:0px auto;
+  }
+}
