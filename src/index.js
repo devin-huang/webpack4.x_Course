@@ -1,5 +1,9 @@
 import './style/style.scss'
 import img from './assets/Webpack.png'
+import { person, includes } from './handler'
+
+console.log(new person())
+console.log(includes())
 
 // 这里面使用ES6语法需要安装babel-loader,否则会报错
 function component () {
