@@ -20,9 +20,7 @@ function resolve (dir) {
 
 const generateConfig = env => {
   return {
-    entry: {
-      app: './src/index.js'
-    },
+    entry: './src/index.js',
     output: {
       filename: env === 'production' ? 'js/[name].[contenthash].js' : 'js/[name].js',
       path: resolve('dist')
@@ -130,4 +128,4 @@ module.exports = env => {
   console.log('=======================ENV================', env)
   let config = env === 'production' ? productionConfig : developmentConfig
   return merge(generateConfig(env), config)
-};
+}

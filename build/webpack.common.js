@@ -20,9 +20,7 @@ function resolve (dir) {
 console.log(process.env.NODE_ENV, '====================')
 
 module.exports = {
-  entry: {
-    app: './src/index.js'
-  },
+  entry: './src/index.js',
   output: {
     filename: process.env.NODE_ENV === 'production' ? 'js/[name].[contenthash].js' : 'js/[name].js',
     path: resolve('dist')
