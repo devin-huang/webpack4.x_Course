@@ -1,9 +1,9 @@
-## WebPack
+## Webpack
 
 > 本质上，webpack 是一个现代 JavaScript 应用程序的静态模块打包工具。当 webpack 处理应用程序时，它会在内部构建一个 依赖图(dependency graph)，此依赖图会映射项目所需的每个模块，并生成一个或多个 bundle。
 
 
-## WebPack与Grunt、Gulp相比特性
+## Webpack与Grunt、Gulp相比特性
 
 > Webpack和Gulp/Grunt并没有太多的可比性，Gulp/Grunt是一种能够优化前端的开发流程的工具，而WebPack是一种模块化的解决方案，不过Webpack的优点使得Webpack在很多场景下可以替代Gulp/Grunt类的工具。
 
