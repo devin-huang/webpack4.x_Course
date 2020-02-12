@@ -73,8 +73,6 @@
 
 * 根据环境变量模块化打包
 
-package.json
-
 > 运行跨平台设置和使用环境变量  `npm install --save-dev cross-env`
 
 ```json
