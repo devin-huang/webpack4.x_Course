@@ -1,12 +1,20 @@
 ## Webpack
 
-> 本质上，webpack 是一个现代 JavaScript 应用程序的静态模块打包工具。当 webpack 处理应用程序时，它会在内部构建一个 依赖图(dependency graph)，此依赖图会映射项目所需的每个模块，并生成一个或多个 bundle。
+> 本质上，webpack 是现代 JavaScript 应用程序的静态模块打包工具。当 webpack 处理应用程序时，它会在内部构建一个 依赖图(dependency graph)，此依赖图会映射项目所需的每个模块，并生成一个或多个 bundle。
 
 > 模块化打包： 将程序按照一定的规则（功能）划分为多个块（类）合并成一个文件并将代码优化/压缩操作
 
+> 模块化优点：
+
+    * 在复杂的系统中合理分离代码，便于维护及后续开发；明确分工助于独自完成核心部分 
+    * 不需要按顺序、依赖
+    * 不需额外的命名空间支持
+    
+> import => ES6语法需要loader转为ES5，动态编译（引用时运行）， require => commonJS 既是Node方式，静态编译（编译试运行）
+    
 ## Webpack与Grunt、Gulp相比特性
 
-> Webpack和Gulp/Grunt并没有太多的可比性，Gulp/Grunt是一种能够优化前端的开发流程的工具，而WebPack是一种模块化的解决方案，不过Webpack的优点使得Webpack在很多场景下可以替代Gulp/Grunt类的工具。
+> Webpack 和 Gulp/Grunt 并没有太多的可比性，Gulp/Grunt 是一种能够优化前端的开发流程的工具，而 WebPack 是一种模块化的解决方案，不过 Webpack 的优点使得 Webpack 在很多场景下可以替代 Gulp/Grunt 类的工具。
 
 
 ## npm install
@@ -106,7 +114,7 @@ alias                               指定名称来替代（第三方框架/路�
 
 ### externals 扩展
 
-< CDN引用第三方依赖， 首先声明免除打包指定第三方依赖，再把ProvidePlugin对应依赖库删除,并在index.html中直接引用CDN
+> CDN引用第三方依赖， 首先声明免除打包指定第三方依赖，再把ProvidePlugin对应依赖库删除,并在index.html中直接引用CDN
 
 ### plugin
 
@@ -124,11 +132,23 @@ UglifyJsPlugin                       压缩 JavaScript
 
 ```
 
-> 优化策略
+## 优化策略
 
-> 1.dllPlugin 打包项目时将第三方框架/插件抽离直接再dist/html引用
+> 1.source-map 根据不同环境选择最优[sourceMap选项](https://webpack.docschina.org/configuration/devtool)映射报错真实位置
 
-> 2.happypack 多线程打包
+> 2.noParse 设置第三方库（Jquery/Lodash）不需解析
+
+> 3.IgnorePlugin 忽略第三方库中不必要文件（如语言文件包、端文件，把所需类型JS文件直接在index引用, include / exclude过滤优化）
+
+> 4.dllPlugin 动态链接库 （如第三方库过于庞大且不需时常改动所以无需每次打包，使用dllPlugin保存为变量引用）
+
+> 5.happypack 多线程打包 (JS / CSS)
+
+> 6.splitChunks 抽离公共代码，但如果抽离第三方库也可，但需要添加priority设为较高优先级
+
+> 7.plugin-syntax-dynamic-import 懒加载，通过事件触发而加载指定模块
+
+> 8.全局引用 （1）ProvidePlugin每个页面添加、引用第三方库 （2）externals 指定第三方库使用CDN方式引用
 
 
 ## 环境变量
