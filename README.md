@@ -1,52 +1,15 @@
 ## Webpack
 
--  本质上，webpack 是现代 JavaScript 应用程序的静态模块打包工具。当 webpack 处理应用程序时，它会在内部构建一个 依赖图(dependency graph)，此依赖图会映射项目所需的每个模块，并生成一个或多个 bundle。
-
--  模块化打包： 将程序按照一定的规则（功能）划分为多个块（类）合并成一个文件并将代码优化/压缩操作
+-  webpack 是现代 JavaScript 应用程序的静态模块化打包工具。当 webpack 处理应用程序时，它会在内部构建一个 依赖图(dependency graph)，此依赖图会映射项目所需的每个模块，并生成一个或多个 bundle。
 
 -  模块化优点：
-   - 在复杂的系统中合理分离代码，便于维护及后续开发；明确分工助于独自完成核心部分 
+   - 复杂系统中合理分离代码，便于维护及后续开发；明确分工助于独自完成核心部分 
    - 不需要按顺序、依赖
    - 不需额外的命名空间支持
     
 - 引用
    - import => ES6语法需要loader转为ES5，动态编译（引用时运行）
    - require => commonJS 既是Node方式，静态编译（编译试运行）
-    
-## Webpack与Grunt、Gulp相比特性
-
-> Webpack 和 Gulp/Grunt 并没有太多的可比性，Gulp/Grunt 是一种能够优化前端的开发流程的工具，而 WebPack 是一种模块化的解决方案，不过 Webpack 的优点使得 Webpack 在很多场景下可以替代 Gulp/Grunt 类的工具。
-
-
-## npm install
-
-```
-npm install
-1.安装到项目 node_modules; 
-2.不会将依赖写入 devDependencies 或 dependencies;
-3.npm install 初始化项目时不会下载
-
-npm install -g
-1.不安装到项目 node_modules;
-2.不会将依赖写入 devDependencies或dependencies;
-3. npm install 初始化项目时不会下载
-
-npm install -save
-1.安装到项目 node_modules;
-2.将依赖写入 dependencies;
-3.npm install 初始化项目时下载; 
-4. npm install --production 或注明NODE_ENV变量值为 production 时，自动下载依赖到 node_modules 目录
-
-npm install --save-dev
-1.安装依赖到项目 node_modules;
-2. 将依赖写入 devDependencies;
-3.npm install 初始化项目时下载依赖;
-4. npm install --production或注明NODE_ENV变量值为 production 时，不会自动下载依赖到 node_modules 目录
-
-
-**生产环境，使用npm install --production 安装 dependencies 部分的模块**
-**开发环境，npm install ，安装所有 devDependencies 和 dependencies 里面的模块**
-```
 
 
 ## 初始化项目结构
@@ -144,6 +107,45 @@ plugins: [
   })
 ]
 ```
+
+
+## Webpack与Grunt、Gulp相比特性
+
+> Webpack 和 Gulp/Grunt 并没有太多的可比性，Gulp/Grunt 是一种能够优化前端的开发流程的工具，而 WebPack 是一种模块化的解决方案，不过 Webpack 的优点使得 Webpack 在很多场景下可以替代 Gulp/Grunt 类的工具。
+
+
+## npm install区别
+
+```
+npm install
+1.安装到项目 node_modules; 
+2.不会将依赖写入 devDependencies 或 dependencies;
+3.npm install 初始化项目时不会下载
+
+npm install -g
+1.不安装到项目 node_modules;
+2.不会将依赖写入 devDependencies或dependencies;
+3. npm install 初始化项目时不会下载
+
+npm install -save
+1.安装到项目 node_modules;
+2.将依赖写入 dependencies;
+3.npm install 初始化项目时下载; 
+4. npm install --production 或注明NODE_ENV变量值为 production 时，自动下载依赖到 node_modules 目录
+
+npm install --save-dev
+1.安装依赖到项目 node_modules;
+2. 将依赖写入 devDependencies;
+3.npm install 初始化项目时下载依赖;
+4. npm install --production或注明NODE_ENV变量值为 production 时，不会自动下载依赖到 node_modules 目录
+
+
+**生产环境，使用npm install --production 安装 dependencies 部分的模块**
+**开发环境，npm install ，安装所有 devDependencies 和 dependencies 里面的模块**
+```
+
+
+## 配置
 
 ### devtool 映射 
 
