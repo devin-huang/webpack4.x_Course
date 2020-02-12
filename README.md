@@ -9,7 +9,9 @@
    - 不需要按顺序、依赖
    - 不需额外的命名空间支持
     
-- import => ES6语法需要loader转为ES5，动态编译（引用时运行）， require => commonJS 既是Node方式，静态编译（编译试运行）
+- 引用
+   - import => ES6语法需要loader转为ES5，动态编译（引用时运行）
+   - require => commonJS 既是Node方式，静态编译（编译试运行）
     
 ## Webpack与Grunt、Gulp相比特性
 
@@ -80,6 +82,69 @@ npm install --save-dev
 * Loader：模块转换器，用于把模块原内容按照需求转换成新内容。
 * Plugin：扩展插件，在 Webpack 构建流程中的特定时机注入扩展逻辑来改变构建结果或做你想要的事情。
 
+## 优化策略
+
+> 1.source-map 根据不同环境选择最优[sourceMap选项](https://webpack.docschina.org/configuration/devtool)映射报错真实位置
+
+> 2.noParse 设置第三方库（Jquery/Lodash）不需解析
+
+> 3.IgnorePlugin 忽略第三方库中不必要文件（如语言文件包、端文件，把所需类型JS文件直接在index引用, include / exclude过滤优化）
+
+> 4.dllPlugin 动态链接库 （如第三方库过于庞大且不需时常改动所以无需每次打包，使用dllPlugin保存为变量引用）
+
+> 5.happypack 多线程打包 (JS / CSS)
+
+> 6.splitChunks 抽离公共代码，但如果抽离第三方库也可，但需要添加priority设为较高优先级
+
+> 7.plugin-syntax-dynamic-import 懒加载，通过事件触发而加载指定模块
+
+> 8.全局引用 （1）ProvidePlugin每个页面添加、引用第三方库 （2）externals 指定第三方库使用CDN方式引用
+
+
+## 环境变量
+
+### 根据环境变量模块化打包
+
+package.json
+
+> 运行跨平台设置和使用环境变量  `npm install --save-dev cross-env`
+
+```json
+// 使用cross-env切换环境变量
+"dev": "cross-env NODE_ENV=development  webpack-dev-server --config build/webpack.dev.js --open --progress",
+"build": "cross-env NODE_ENV=production webpack --config build/webpack.prod.js",
+
+// 使用node内置方式切换环境变量
+"dev:env": "webpack-dev-server --env development --open --config build-env/webpack.common.js",
+"build:env": "webpack --env production --config build-env/webpack.common.js"
+```
+
+### 根据环境变量配置路径
+
+> 实际开发中需要对不同环境的API/图片/登录等进行配置，所以需要项目目录结构：`config`存放不同环境变量的资源路径配置， 再用环境变量模块化打包时指定引用资源路径配置，保存到 `webpack.DefinePlugin` 从而前端能获取资源路径
+
+
+config/prod.env.js
+```bash
+module.exports = {
+  'API_ROOT': JSON.stringify('http://localhost:8080'),
+  'LOGIN_URL': JSON.stringify('http://localhost:8080.prod/login'),
+  'IMAGE_URL': JSON.stringify('http://localhost:8080.prod/image')
+}
+```
+
+
+webpack.prod.js  
+```js
+const env = require('../config/prod.env')
+
+plugins: [
+  new webpack.DefinePlugin({
+    'process.env': env
+  })
+]
+```
+
 ### devtool 映射 
 
 > 当JS发现错误时准确定位到源文件位置） [devtool配置](https://webpack.docschina.org/configuration/devtool/#src/components/Sidebar/Sidebar.jsx)
@@ -129,70 +194,6 @@ CleanWebpackPlugin                   清除文件夹/文件
 OptimizeCSSAssetsPlugin              压缩 CSS
 UglifyJsPlugin                       压缩 JavaScript
 
-```
-
-## 优化策略
-
-> 1.source-map 根据不同环境选择最优[sourceMap选项](https://webpack.docschina.org/configuration/devtool)映射报错真实位置
-
-> 2.noParse 设置第三方库（Jquery/Lodash）不需解析
-
-> 3.IgnorePlugin 忽略第三方库中不必要文件（如语言文件包、端文件，把所需类型JS文件直接在index引用, include / exclude过滤优化）
-
-> 4.dllPlugin 动态链接库 （如第三方库过于庞大且不需时常改动所以无需每次打包，使用dllPlugin保存为变量引用）
-
-> 5.happypack 多线程打包 (JS / CSS)
-
-> 6.splitChunks 抽离公共代码，但如果抽离第三方库也可，但需要添加priority设为较高优先级
-
-> 7.plugin-syntax-dynamic-import 懒加载，通过事件触发而加载指定模块
-
-> 8.全局引用 （1）ProvidePlugin每个页面添加、引用第三方库 （2）externals 指定第三方库使用CDN方式引用
-
-
-## 环境变量
-
-### 根据环境变量模块化打包
-
-package.json
-
-> 运行跨平台设置和使用环境变量  `npm install --save-dev cross-env`
-
-```json
-// 使用cross-env切换环境变量
-"dev": "cross-env NODE_ENV=development  webpack-dev-server --config build/webpack.dev.js --open --progress",
-"build": "cross-env NODE_ENV=production webpack --config build/webpack.prod.js",
-
-// 使用node内置方式切换环境变量
-"dev:env": "webpack-dev-server --env development --open --config build-env/webpack.common.js",
-"build:env": "webpack --env production --config build-env/webpack.common.js"
-```
-
-
-### 根据环境变量配置路径
-
-> 实际开发中需要对不同环境的API/图片/登录等进行配置，所以需要项目目录结构：`config`存放不同环境变量的资源路径配置， 再用环境变量模块化打包时指定引用资源路径配置，保存到 `webpack.DefinePlugin` 从而前端能获取资源路径
-
-
-config/prod.env.js
-```bash
-module.exports = {
-  'API_ROOT': JSON.stringify('http://localhost:8080'),
-  'LOGIN_URL': JSON.stringify('http://localhost:8080.prod/login'),
-  'IMAGE_URL': JSON.stringify('http://localhost:8080.prod/image')
-}
-```
-
-
-webpack.prod.js  
-```js
-const env = require('../config/prod.env')
-
-plugins: [
-  new webpack.DefinePlugin({
-    'process.env': env
-  })
-]
 ```
 
 ## 其他
