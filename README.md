@@ -103,7 +103,7 @@ npm install --save-dev
 
 ## 环境变量
 
-* 根据环境变量模块化打包 *
+* 根据环境变量模块化打包
 
 package.json
 
@@ -119,7 +119,7 @@ package.json
 "build:env": "webpack --env production --config build-env/webpack.common.js"
 ```
 
-* 根据环境变量配置路径 *
+* 根据环境变量配置路径
 
 > 实际开发中需要对不同环境的API/图片/登录等进行配置，所以需要项目目录结构：`config`存放不同环境变量的资源路径配置， 再用环境变量模块化打包时指定引用资源路径配置，保存到 `webpack.DefinePlugin` 从而前端能获取资源路径
 
