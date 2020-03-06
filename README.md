@@ -2,14 +2,14 @@
 
 -  webpack 是现代 JavaScript 应用程序的静态模块化打包工具。当 webpack 处理应用程序时，它会在内部构建一个 依赖图(dependency graph)，此依赖图会映射项目所需的每个模块，并生成一个或多个 bundle。
 
--  模块化优点：
+-  模块化 (抽象封装的最小/最优代码集合)：
    - 复杂系统中合理分离代码，便于维护及后续开发；明确分工助于独自完成核心部分 
    - 不需要按顺序、依赖
    - 不需额外的命名空间支持
     
 - 引用
-   - import => ES6语法需要loader转为ES5，动态编译（引用时运行）
-   - require => commonJS 既是Node方式，静态编译（编译试运行）
+   - import => ES6语法需要loader转为ES5，静态编译（编译时运行），引用赋值
+   - require => commonJS(Node与webpack)方式，动态编译（调用时运行），拷贝复制
 
 
 ## 初始化项目结构
@@ -46,9 +46,9 @@
 
 - Chunk：代码块，一个 Chunk 由多个模块组合而成，用于代码合并与分割
 
-- Loader：模块转换器，用于把模块原内容按照需求转换成新内容
+- Loader：webpack仅能识别JS文件，非JS文件（CSS/Typescript等）由loader编译成JS
 
-- Plugin：扩展插件，在 Webpack 构建流程中的特定时机注入扩展逻辑来改变构建结果或做你想要的事情
+- Plugin：以项目为准，比如压缩、优化、配置环境
 
 ## 优化策略
 
