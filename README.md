@@ -177,8 +177,9 @@ vendors                            第三方依赖框架/库
 > 配置Webpack简写
 
 ```
+modules: [path.resolve('node_modules')] 根据给定路径需找需找第三方库
 extensions                          根据配置内容可以省略引用文件的后缀名，依顺序搜索
-alias                               指定名称来替代（第三方框架/路径等）
+alias                               枚举方式引用第三方框架/路径
 ```
 
 ### externals 扩展
